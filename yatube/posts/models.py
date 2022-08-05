@@ -1,5 +1,3 @@
-from tabnanny import verbose
-from typing import OrderedDict
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -12,7 +10,7 @@ class Group(models.Model):
     title = models.CharField(max_length=200, verbose_name='title')
     slug = models.SlugField(unique=True, verbose_name='slug')
     description = models.TextField(verbose_name='description')
-    
+
     class Meta:
         verbose_name = "group"
         verbose_name_plural = "posts"
@@ -36,6 +34,7 @@ class Post(models.Model):
         on_delete=models.SET_NULL,
         related_name='group'
     )
+    
     class Meta:
         ordering = ["-pub_date"][:POSTS_PER_PAGE]
         verbose_name = "post"
