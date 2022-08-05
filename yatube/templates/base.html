@@ -2,22 +2,31 @@
 <html lang="ru"> 
   {% load static %}  
 
-  <head>  
-    {% block title %}   
-    {% endblock %}  
+  <head>    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/fav/fav.ico" type="image">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/fav/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/fav/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#000">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
   </head>
-  <body>       
-    <header>
-      {% include 'includes/header.html' %}
-    </header>
 
-    
+  
+    <title>
+      {% block title %}   
+      {% endblock %}
+    </title>  
+
+
+  <body>       
+      {% include 'includes/header.html' %}
     <main>
       {% block content %}
       {% endblock %}
     </main>
-    <footer>
       {% include 'includes/footer.html' %} 
-    </footer>
   </body>
 </html>
