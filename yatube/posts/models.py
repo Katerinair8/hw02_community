@@ -34,7 +34,7 @@ class Post(models.Model):
         on_delete=models.SET_NULL,
         related_name='group'
     )
-    
+
     class Meta:
         ordering = ["-pub_date"][:POSTS_PER_PAGE]
         verbose_name = "post"
