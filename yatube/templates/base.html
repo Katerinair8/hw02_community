@@ -1,8 +1,7 @@
 <!DOCTYPE html> 
 <html lang="ru"> 
   {% load static %} 
-  <!-- Не могу понять почему не подключаются css стили к шаблонам-->
-
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <head>    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,15 +12,11 @@
     <meta name="msapplication-TileColor" content="#000">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-  </head>
-
-  
     <title>
       {% block title %}   
       {% endblock %}
-    </title>  
-
-
+    </title>
+  </head>
   <body>       
       {% include 'includes/header.html' %}
     <main>

@@ -11,8 +11,8 @@ class Group(models.Model):
     description = models.TextField(verbose_name='description')
 
     class Meta:
-        verbose_name = "group"
-        verbose_name_plural = "posts"
+        verbose_name = 'group'
+        verbose_name_plural = 'groups'
 
     def __str__(self):
         return self.title
@@ -20,7 +20,7 @@ class Group(models.Model):
 
 class Post(models.Model):
     text = models.TextField(verbose_name='text')
-    pub_date = models.DateTimeField(auto_now_add=True, verbose_name='Pub date')
+    pub_date = models.DateTimeField(auto_now_add=True, verbose_name='date')
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -31,14 +31,10 @@ class Post(models.Model):
         blank=True,
         null=True,
         on_delete=models.SET_NULL,
-        related_name='group_post'
+        related_name='posts'
     )
 
     class Meta:
-        # Совсем не поняла комментарий насчет кортежа.
-        # В документации django указано, что такая запись ordering
-        # может возвращать как список, так и кортеж
-
-        ordering = ["-pub_date"]
-        verbose_name = "post"
-        verbose_name_plural = "all posts"
+        ordering = [('-pub_date')]
+        verbose_name = 'post'
+        verbose_name_plural = 'posts'
