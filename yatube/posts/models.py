@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
-from yatube.settings import POSTS_PER_PAGE
 
 User = get_user_model()
 
@@ -32,10 +31,14 @@ class Post(models.Model):
         blank=True,
         null=True,
         on_delete=models.SET_NULL,
-        related_name='group'
+        related_name='group_post'
     )
 
     class Meta:
-        ordering = ["-pub_date"][:POSTS_PER_PAGE]
+        #Совсем не поняла комментарий насчет кортежа. В документации django
+        #указано, что такая запись ordering может возвращать как список, так и
+        #кортеж
+
+        ordering = ["-pub_date"]
         verbose_name = "post"
         verbose_name_plural = "all posts"

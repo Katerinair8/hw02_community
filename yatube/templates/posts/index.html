@@ -1,34 +1,30 @@
-{% extends 'base.html'%}  
- 
-<head>
-  <title>
+{% extends 'base.html'%}
+
     {% block title %}
     Последние обновления на сайте
     {% endblock %}
-  </title>  
-</head>
-
-  <main>
  
-    {% block content %} 
-    {% for post in posts %}
+    {% block content %}
+    <p>
+      <h1> Последние обновления на сайте </h1>
+    </p>
     <div class="container py-5">
+      {% for post in posts %}
+        <article>
+          <ul>
+            <li>
+              Автор: {{ post.author.get_full_name }}
+            </li>
+            <li>
+              Дата публикации: {{ post.pub_date|date:"d E Y" }}
+            </li>
+          </ul>
+          <p>{{ post.text }}</p>
+          {% if post.group %}    
+          <a href="{% url 'posts:group_posts' post.group.slug %}">все записи группы</a>
+          {% endif %}
       <article>
-        <ul>
-          <li>
-            Автор: {{ post.author.get_full_name }}
-          </li>
-          <li>
-            Дата публикации: {{ post.pub_date|date:"d E Y" }}
-          </li>
-        </ul>
-      <p>{{ post.text }}</p>
-      {% if post.group %}    
-      <a href="{% url 'posts:group_posts' post.group.slug %}">все записи группы</a>
-      {% endif %}
       {% if not forloop.last %}<hr>{% endif %}
-      <article>
-    </div>
-    {% endfor %}    
+      {% endfor %}
+    </div>    
     {% endblock %}
-  </main>
